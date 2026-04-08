@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WSS Blueprint — Zdiagnozuj Swój Proces Sprzedaży w 15 Minut | WiseGroup</title>
+<meta name="description" content="Pobierz darmowy framework diagnostyczny oparty na metodyce Wise Selling System. Znajdź wąskie gardła w procesie sprzedaży B2B w 15 minut.">
+<meta property="og:title" content="WSS Blueprint — Darmowe Narzędzie Diagnostyczne | WiseGroup">
+<meta property="og:description" content="Framework diagnostyczny z sesji za 2 500 PLN — tutaj za darmo. 15 minut, które mogą zaoszczędzić Ci 6 miesięcy błędnych decyzji.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══ RESET & BASE ═══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth;text-rendering:optimizeLegibility}
+body{font-family:'Poppins',system-ui,-apple-system,sans-serif;color:#1D1D1F;background:#fff;overflow-x:hidden}
+::selection{background:#0DB39E;color:#fff}
+img{max-width:100%;display:block}
+a{color:#0DB39E;text-decoration:underline}
+
+/* ═══ CSS VARIABLES ═══ */
+:root{
+  --white:#FFFFFF;--light:#F8F9FA;--light-alt:#F1F3F5;
+  --accent:#0DB39E;--accent-hover:#0A9682;--accent-subtle:rgba(13,179,158,0.06);
+  --accent-light:#E6FAF7;--accent-medium:rgba(13,179,158,0.12);
+  --text:#1D1D1F;--text-sec:#6B7280;--text-muted:#9CA3AF;
+  --border:#E5E7EB;--border-light:#F0F0F0;
+  --red:#DC2626;--red-bg:rgba(220,38,38,0.06);--red-soft:#FEE2E2;--red-text:#991B1B;
+  --orange:#D97706;--orange-bg:rgba(217,119,6,0.08);
+  --green:#059669;
+  --shadow:0 1px 3px rgba(0,0,0,0.05),0 4px 16px rgba(0,0,0,0.04);
+  --shadow-md:0 2px 8px rgba(0,0,0,0.06),0 8px 32px rgba(0,0,0,0.06);
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.04),0 2px 8px rgba(0,0,0,0.03);
+}
+
+/* ═══ UTILITIES ═══ */
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+.container--narrow{max-width:720px;margin:0 auto;padding:0 24px}
+.container--mid{max-width:740px;margin:0 auto;padding:0 24px}
+.container--tight{max-width:560px;margin:0 auto;padding:0 24px}
+.text-center{text-align:center}
+
+/* ═══ FADE-IN ANIMATION ═══ */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .65s cubic-bezier(.25,.1,.25,1),transform .65s cubic-bezier(.25,.1,.25,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fade-in.d1{transition-delay:.06s}.fade-in.d2{transition-delay:.1s}
+.fade-in.d3{transition-delay:.13s}.fade-in.d4{transition-delay:.18s}
+.fade-in.d5{transition-delay:.22s}.fade-in.d6{transition-delay:.26s}
+.fade-in.d7{transition-delay:.3s}
+
+/* ═══ BADGES ═══ */
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;border-radius:100px;padding:7px 16px;font-size:12px;font-weight:600;letter-spacing:.03em}
+.badge--accent{background:var(--accent-subtle);color:var(--accent)}
+.badge--orange{background:var(--orange-bg);color:var(--orange);font-size:11px;padding:7px 14px}
+.badge__dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+/* ═══ TYPOGRAPHY ═══ */
+h1{font-size:clamp(32px,5vw,52px);font-weight:700;line-height:1.12;letter-spacing:-.02em;color:var(--text);max-width:720px}
+h1 .hl{color:var(--accent)}
+h2{font-size:clamp(26px,3.8vw,38px);font-weight:700;line-height:1.18;color:var(--text)}
+h2 .hl{color:var(--accent)}
+.sub{font-size:clamp(16px,2vw,19px);line-height:1.7;color:var(--text-sec);max-width:620px}
+.time-frame{font-size:15px;color:var(--accent);font-weight:600;margin-bottom:36px}
+
+/* ═══ HERO GRID ═══ */
+.hero-grid{display:grid;grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:40px;align-items:start}
+@media(max-width:768px){.hero-grid{grid-template-columns:1fr}}
+
+/* ═══ FORM CARD ═══ */
+.form-card{background:var(--white);border-radius:14px;padding:32px 28px;box-shadow:var(--shadow-md);border:1px solid var(--border-light)}
+.form-card__anchor{background:var(--accent-subtle);border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:var(--text-sec);line-height:1.5}
+.form-card__anchor strong{color:var(--text)}
+.form-card__anchor .free{color:var(--accent);font-weight:700}
+.form-card__title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:18px}
+
+.field{margin-bottom:16px}
+.field__label{display:block;margin-bottom:6px;font-size:13px;font-weight:500;color:var(--text-sec)}
+.field__input,.field__select{width:100%;padding:13px 16px;background:var(--white);border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:15px;color:var(--text);outline:none;transition:border-color .2s}
+.field__input:focus,.field__select:focus{border-color:var(--accent)}
+.field__input::placeholder{color:var(--text-muted)}
+.field__select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239CA3AF' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.field__select.empty{color:var(--text-muted)}
+
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--text-muted);line-height:1.5;cursor:pointer;margin:4px 0 16px}
+.consent input{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--accent);cursor:pointer}
+
+.form-error{font-size:13px;color:var(--red);padding:10px 14px;background:var(--red-bg);border-radius:8px;margin-bottom:16px;font-weight:500;display:none}
+.form-error.show{display:block}
+
+/* ═══ CTA BUTTON ═══ */
+.cta{display:inline-flex;align-items:center;justify-content:center;padding:15px 32px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;border-radius:8px;border:none;cursor:pointer;font-family:inherit;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 2px 12px rgba(13,179,158,.15);letter-spacing:.01em}
+.cta:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 4px 20px rgba(13,179,158,.3)}
+.cta--full{width:100%}
+.cta--outline{background:transparent;color:var(--accent);border:2px solid var(--accent);box-shadow:none}
+.cta--outline:hover{background:var(--accent-subtle);transform:translateY(-1px);box-shadow:none}
+
+.form-note{font-size:12px;color:var(--text-muted);text-align:center;margin-top:10px}
+
+/* ═══ SOCIAL PROOF MINI ═══ */
+.sp-mini{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px}
+.sp-mini__avatars{display:flex}
+.sp-mini__av{width:28px;height:28px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:700}
+.sp-mini__av+.sp-mini__av{margin-left:-8px}
+.sp-mini__text{font-size:13px;color:var(--text-sec);font-weight:500}
+.sp-mini__text strong{color:var(--text)}
+
+/* ═══ MOCKUP ═══ */
+.mockup{background:var(--light);border-radius:14px;border:1px solid var(--border);padding:36px 28px}
+.mockup__label{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+.mockup__pdf{background:var(--white);border-radius:10px;padding:24px 22px;box-shadow:var(--shadow-sm);border:1px solid var(--border-light)}
+.mockup__pdf-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px}
+.mockup__pdf-sub{font-size:12px;color:var(--text-sec);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--accent)}
+.mockup__row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;font-size:13px;color:var(--text);border-bottom:1px solid var(--border-light)}
+.mockup__row:last-child{border-bottom:none}
+.mockup__score{font-size:15px;font-weight:700;color:var(--accent)}
+.mockup__score--red{color:var(--red);background:var(--red-soft);padding:2px 8px;border-radius:4px}
+.mockup__note{margin-top:14px;padding:11px 14px;background:var(--accent-subtle);border-radius:8px;font-size:12px;color:var(--text-sec);line-height:1.5;border-left:3px solid var(--accent)}
+.mockup__cta-text{font-size:14px;color:var(--text);font-weight:600;text-align:center;margin-top:18px}
+.mockup__cta-text .hl{color:var(--accent)}
+.mockup__desc{font-size:12px;color:var(--text-muted);line-height:1.5;margin-top:6px;font-style:italic;text-align:center}
+
+/* ═══ SECTIONS ═══ */
+.sec--white{background:var(--white);padding:64px 0}
+.sec--light{background:var(--light);padding:56px 0}
+.sec--cta-bottom{background:var(--accent-light);padding:56px 0;border-top:1px solid var(--accent-medium);border-bottom:1px solid var(--accent-medium)}
+.sec--hero{background:var(--white);padding:48px 0}
+.sec--proof{padding:44px 0}
+.sec--authority{padding:48px 0}
+.sec--case{padding:48px 0}
+
+/* ═══ METRIC CARDS ═══ */
+.metrics{display:flex;gap:20px;flex-wrap:wrap}
+.metric{background:var(--white);border-radius:12px;padding:28px 24px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--border-light);flex:1 1 0;min-width:180px}
+.metric__icon{width:44px;height:44px;border-radius:10px;background:var(--accent-subtle);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:20px}
+.metric__value{font-size:36px;font-weight:700;color:var(--accent);line-height:1.1;margin-bottom:8px}
+.metric__label{font-size:13px;font-weight:500;color:var(--text-sec);line-height:1.5}
+
+/* ═══ BENEFITS ═══ */
+.benefit{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--border)}
+.benefit__num{width:32px;height:32px;border-radius:50%;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--accent);flex-shrink:0;margin-top:2px}
+.benefit__text{font-size:16px;line-height:1.7;color:var(--text)}
+
+/* ═══ CASE STUDY ═══ */
+.case{background:var(--white);border-radius:14px;box-shadow:var(--shadow);border:1px solid var(--border-light);padding:32px 28px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+@media(max-width:768px){.case{grid-template-columns:1fr}}
+.case__label{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.case__quote{font-size:17px;font-weight:600;color:var(--text);line-height:1.5;font-style:italic;margin-bottom:16px}
+.case__author{display:flex;align-items:center;gap:12px}
+.case__avatar{width:40px;height:40px;border-radius:50%;background:var(--accent-subtle);border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--accent)}
+.case__name{font-size:14px;font-weight:600;color:var(--text)}
+.case__role{font-size:13px;color:var(--text-sec)}
+.case__metric{text-align:center;padding:20px 24px;background:var(--accent-subtle);border-radius:12px;min-width:120px}
+.case__metric-val{font-size:36px;font-weight:700;color:var(--accent);line-height:1.1}
+.case__metric-label{font-size:12px;color:var(--text-sec);margin-top:4px;font-weight:500}
+
+/* ═══ STEPS ═══ */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.step{background:var(--light);border-radius:12px;padding:28px 24px;border:1px solid var(--border-light)}
+.step__num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:var(--accent-subtle);font-weight:700;font-size:14px;color:var(--accent);margin-bottom:16px}
+.step__title{font-size:18px;font-weight:600;color:var(--text);margin-bottom:8px}
+.step__desc{font-size:14px;color:var(--text-sec);line-height:1.65}
+
+/* ═══ CLIENT LOGOS ═══ */
+.logos{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.logo{padding:10px 22px;background:var(--light);border-radius:8px;font-size:13px;color:var(--text-muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;transition:color .2s,background .2s}
+.logo:hover{color:var(--text-sec);background:var(--accent-subtle)}
+
+/* ═══ AUTHORITY ═══ */
+.auth{background:var(--light);border-radius:14px;padding:28px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.auth__icon{width:56px;height:56px;border-radius:12px;background:var(--accent-subtle);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:var(--accent);flex-shrink:0}
+.auth__body{flex:1;min-width:240px}
+.auth__name{font-size:18px;font-weight:700;color:var(--text);margin-bottom:4px}
+.auth__meta{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:10px}
+.auth__desc{font-size:14px;color:var(--text-sec);line-height:1.7;margin-bottom:10px}
+.auth__halo{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-sec);font-weight:500;background:var(--accent-subtle);padding:5px 12px;border-radius:6px}
+
+/* ═══ BOTTOM CTA ═══ */
+.bottom-risk{font-size:14px;color:var(--text-sec);font-weight:500;margin-bottom:24px}
+.bottom-note{font-size:12px;color:var(--text-muted);margin-top:14px}
+
+/* ═══ FOOTER ═══ */
+footer{background:var(--white);border-top:1px solid var(--border);padding:20px 24px;text-align:center;font-size:12px;color:var(--text-muted)}
+footer a{color:var(--text-muted)}
+.sig{font-size:11px;margin-top:6px;display:inline-block;opacity:.7}
+
+/* ═══ THANK YOU PAGE ═══ */
+.typ{display:none;min-height:100vh;background:var(--white);align-items:center;justify-content:center;padding:40px 20px}
+.typ.show{display:flex}
+.typ__check{width:64px;height:64px;border-radius:50%;background:var(--accent-light);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:28px;color:var(--green)}
+.typ h1{font-size:32px;margin-bottom:12px}
+.typ p{font-size:16px;color:var(--text-sec);line-height:1.7;margin-bottom:28px}
+.typ__next{background:var(--accent-light);border-radius:14px;border:1px solid var(--accent-medium);padding:28px 24px;margin-bottom:32px;text-align:left}
+.typ__next-label{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.typ__next h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px}
+.typ__next p{font-size:14px;color:var(--text-sec);line-height:1.65;margin-bottom:18px}
+.typ__next .form-note{margin-top:10px}
+.typ__resources{border-top:1px solid var(--border);padding-top:24px;text-align:left}
+.typ__resources-title{font-size:12px;font-weight:600;color:var(--text-sec);margin-bottom:14px;text-transform:uppercase;letter-spacing:.04em}
+.typ__res{display:flex;gap:14px;align-items:center;padding:12px 14px;background:var(--light);border-radius:10px;margin-bottom:8px;cursor:pointer;transition:background .2s}
+.typ__res:hover{background:var(--accent-subtle)}
+.typ__res-icon{font-size:20px}
+.typ__res-title{font-size:14px;font-weight:600;color:var(--text)}
+.typ__res-desc{font-size:13px;color:var(--text-sec)}
+
+/* ═══ LANDING PAGE WRAPPER ═══ */
+.lp{display:block}
+.lp.hide{display:none}
+
+/* ═══ REDUCED MOTION ═══ */
+@media(prefers-reduced-motion:reduce){
+  .fade-in{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ -->
+<!-- LANDING PAGE                       -->
+<!-- ═══════════════════════════════════ -->
+<div class="lp" id="lp">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="sec--hero">
+    <div class="container">
+
+      <!-- Badges (P8: micro-urgency) -->
+      <div class="badges fade-in">
+        <div class="badge badge--accent">
+          <span class="badge__dot"></span>
+          DARMOWE NARZĘDZIE DIAGNOSTYCZNE
+        </div>
+        <div class="badge badge--orange">Zaktualizowany Q2 2026</div>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="fade-in d1" style="margin-bottom:16px">
+        Zdiagnozuj swój proces sprzedaży <span class="hl">w 15 minut</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="sub fade-in d2" style="margin-bottom:8px">
+        Pobierz WSS Blueprint — framework diagnostyczny oparty na metodyce
+        Wise Selling System. Znajdź wąskie gardła, które kosztują Twoją firmę
+        utracone leady i przychody.
+      </p>
+
+      <!-- P6: Time framing -->
+      <p class="time-frame fade-in d3">
+        15 minut, które mogą zaoszczędzić Ci 6 miesięcy błędnych decyzji.
+      </p>
+
+      <!-- Hero grid: Form + Mockup -->
+      <div class="hero-grid fade-in d4">
+
+        <!-- FORM CARD -->
+        <div class="form-card">
+          <!-- P2: Value anchoring -->
+          <div class="form-card__anchor">
+            Framework, z którego korzystają nasi konsultanci
+            w sesjach diagnostycznych za <strong>2 500 PLN</strong> — tutaj
+            <span class="free">za darmo</span>.
+          </div>
+
+          <p class="form-card__title">Podaj e-mail, aby otrzymać WSS Blueprint:</p>
+
+          <form id="leadForm" novalidate>
+            <div class="field">
+              <label class="field__label" for="email">E-mail firmowy *</label>
+              <input class="field__input" type="email" id="email" name="email"
+                placeholder="jan@twojafirma.pl" autocomplete="email" autofocus required>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="teamSize">Wielkość zespołu sprzedaży *</label>
+              <select class="field__select empty" id="teamSize" name="teamSize" required>
+                <option value="" disabled selected>Wybierz...</option>
+                <option value="1-5">1–5 osób</option>
+                <option value="6-15">6–15 osób</option>
+                <option value="16-50">16–50 osób</option>
+                <option value="50+">Ponad 50 osób</option>
+              </select>
+            </div>
+
+            <label class="consent">
+              <input type="checkbox" id="consent" required>
+              <span>
+                Wyrażam zgodę na przetwarzanie danych osobowych w celu przesłania
+                materiału. <a href="#" onclick="event.preventDefault()">Polityka prywatności</a>
+              </span>
+            </label>
+
+            <div class="form-error" id="formError"></div>
+
+            <button type="submit" class="cta cta--full">Pobierz darmowy Blueprint →</button>
+
+            <!-- P6: Zero risk -->
+            <p class="form-note">Zero rozmów sprzedażowych. Zero zobowiązań. Tylko diagnoza.</p>
+
+            <!-- P1: Social proof at CTA -->
+            <div class="sp-mini">
+              <div class="sp-mini__avatars">
+                <div class="sp-mini__av" style="background:#0DB39E;z-index:4">M</div>
+                <div class="sp-mini__av" style="background:#3B82F6;z-index:3">A</div>
+                <div class="sp-mini__av" style="background:#8B5CF6;z-index:2">K</div>
+                <div class="sp-mini__av" style="background:#F59E0B;z-index:1">J</div>
+              </div>
+              <span class="sp-mini__text"><strong>2 800+</strong> firm B2B już pobrało</span>
+            </div>
+          </form>
+        </div>
+
+        <!-- MOCKUP (P7: Zeigarnik) -->
+        <div class="mockup">
+          <div class="mockup__label">PODGLĄD DOKUMENTU</div>
+          <div class="mockup__pdf">
+            <div class="mockup__pdf-title">WSS Blueprint</div>
+            <div class="mockup__pdf-sub">Diagnoza Procesu Sprzedaży • Wise Selling System</div>
+
+            <div class="mockup__row">
+              <span>Generowanie leadów</span>
+              <span class="mockup__score mockup__score--red">3/10</span>
+            </div>
+            <div class="mockup__row">
+              <span>Kwalifikacja szans</span>
+              <span class="mockup__score">?/10</span>
+            </div>
+            <div class="mockup__row">
+              <span>Proces sprzedaży</span>
+              <span class="mockup__score">?/10</span>
+            </div>
+            <div class="mockup__row">
+              <span>CRM i dane</span>
+              <span class="mockup__score">?/10</span>
+            </div>
+            <div class="mockup__row" style="border-bottom:none">
+              <span>Marketing ↔ Sprzedaż</span>
+              <span class="mockup__score">?/10</span>
+            </div>
+
+            <div class="mockup__note">Wynik końcowy + rekomendacje działań priorytetowych</div>
+          </div>
+          <p class="mockup__cta-text">Jaki będzie <span class="hl">Twój</span> wynik? Pobierz i sprawdź.</p>
+          <p class="mockup__desc">PDF, 4 strony • Framework z scoringiem 0–10 dla każdego etapu lejka</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section class="sec--light">
+    <div class="container fade-in">
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric__icon">⚠</div>
+          <div class="metric__value">70%</div>
+          <div class="metric__label">wdrożeń CRM kończy się porażką bez uporządkowanych procesów</div>
+        </div>
+        <div class="metric">
+          <div class="metric__icon">📉</div>
+          <div class="metric__value">40%</div>
+          <div class="metric__label">leadów jest gubiona przez brak systematycznego follow-upu</div>
+        </div>
+        <div class="metric">
+          <div class="metric__icon">⏱</div>
+          <div class="metric__value">90 dni</div>
+          <div class="metric__label">średni cykl sprzedaży B2B, który można skrócić o 40%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROBLEM + BENEFITS ═══ -->
+  <section class="sec--white">
+    <div class="container--narrow">
+      <h2 class="fade-in" style="margin-bottom:20px">
+        Czy Twój zespół sprzedaży <span class="hl">traci pieniądze</span> na procesy, o których nie wie?
+      </h2>
+      <p class="fade-in d1" style="font-size:16px;line-height:1.75;color:var(--text-sec);margin-bottom:36px">
+        Większość firm B2B inwestuje w CRM, marketing automation
+        i nowe narzędzia — ale bez diagnozy procesu to jak kupowanie
+        leków bez badań. WSS Blueprint pokrywa 5 kluczowych obszarów
+        Twojego systemu przychodowego i pokazuje, gdzie dokładnie tracisz pieniądze.
+      </p>
+
+      <div class="benefit fade-in d2">
+        <div class="benefit__num">1</div>
+        <p class="benefit__text">Zidentyfikujesz wąskie gardła w swoim lejku — od generowania leadów po zamykanie transakcji. Każdy etap z osobnym scoringiem.</p>
+      </div>
+      <div class="benefit fade-in d3">
+        <div class="benefit__num">2</div>
+        <p class="benefit__text">Dowiesz się, czy Twój CRM faktycznie pracuje na przychody, czy jest drogim notatnikiem. Konkretne pytania diagnostyczne zamiast ogólników.</p>
+      </div>
+      <div class="benefit fade-in d4">
+        <div class="benefit__num">3</div>
+        <p class="benefit__text">Otrzymasz priorytetyzowaną listę działań — co naprawić najpierw, żeby zobaczyć efekty w ciągu tygodni, nie miesięcy.</p>
+      </div>
+      <div class="benefit fade-in d5">
+        <div class="benefit__num">4</div>
+        <p class="benefit__text">Ocenisz spójność marketingu ze sprzedażą. Czy oba zespoły pracują na tych samych założeniach, czy każdy robi swoje?</p>
+      </div>
+      <!-- P4: Personal value -->
+      <div class="benefit fade-in d6">
+        <div class="benefit__num">5</div>
+        <p class="benefit__text">Będziesz mieć twarde dane do rozmowy z zarządem — nie opinię, a diagnozę z scoringiem, którą możesz pokazać na najbliższym spotkaniu.</p>
+      </div>
+      <div class="benefit fade-in d7">
+        <div class="benefit__num">6</div>
+        <p class="benefit__text">Wszystko oparte na Wise Selling System — metodyce stosowanej w 160+ projektach dla firm takich jak Brand24, Comarch czy Morele.net.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ P3: CASE STUDY ═══ -->
+  <section class="sec--light sec--case">
+    <div class="container--mid fade-in">
+      <div class="case">
+        <div>
+          <div class="case__label">CASE STUDY</div>
+          <p class="case__quote">
+            „Po diagnozie WSS skróciliśmy cykl sprzedaży z 90 do 52 dni
+            i przestaliśmy gubić leady między marketingiem a handlowcami."
+          </p>
+          <div class="case__author">
+            <div class="case__avatar">M</div>
+            <div>
+              <div class="case__name">Marek W., Dyrektor Sprzedaży</div>
+              <div class="case__role">Firma produkcyjna, 85 osób</div>
+            </div>
+          </div>
+        </div>
+        <div class="case__metric">
+          <div class="case__metric-val">+15%</div>
+          <div class="case__metric-label">wygranych szans<br>w 6 tygodni</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="sec--white">
+    <div class="container">
+      <h2 class="text-center fade-in" style="margin-bottom:44px;font-size:clamp(24px,3.2vw,34px)">Jak to działa?</h2>
+      <div class="steps fade-in d1">
+        <div class="step">
+          <div class="step__num">01</div>
+          <h3 class="step__title">Pobierz Blueprint</h3>
+          <p class="step__desc">Podaj e-mail i otrzymasz PDF z frameworkiem diagnostycznym w ciągu 2 minut.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">02</div>
+          <h3 class="step__title">Odpowiedz na pytania</h3>
+          <p class="step__desc">15 minut z zespołem. Każdy z 5 obszarów ma konkretne pytania z punktacją 0–10.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">03</div>
+          <h3 class="step__title">Otrzymaj wynik + priorytety</h3>
+          <p class="step__desc">Blueprint generuje scoring i pokazuje, od czego zacząć. Bez zgadywania.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SOCIAL PROOF ═══ -->
+  <section class="sec--light sec--proof">
+    <div class="container text-center fade-in">
+      <p style="font-size:12px;color:var(--text-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px">
+        Metodyka stosowana we współpracy z
+      </p>
+      <div class="logos">
+        <div class="logo">Brand24</div>
+        <div class="logo">Comarch</div>
+        <div class="logo">Ceneo</div>
+        <div class="logo">Morele.net</div>
+        <div class="logo">Savills</div>
+        <div class="logo">Future Processing</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ AUTHORITY ═══ -->
+  <section class="sec--white sec--authority">
+    <div class="container--mid fade-in">
+      <div class="auth">
+        <div class="auth__icon">W</div>
+        <div class="auth__body">
+          <p class="auth__name">WiseGroup</p>
+          <p class="auth__meta">7 lat • 160+ specjalistów • Autorska metodyka WSS</p>
+          <p class="auth__desc">
+            Grupa spółek pomagająca firmom B2B rosnąć w obszarach strategii,
+            sprzedaży, marketingu, HR, automatyzacji i finansów.
+            Wise Selling System łączy projektowanie procesów z wdrożeniem
+            technologii — jedno bez drugiego nie działa.
+          </p>
+          <div class="auth__halo">🎧 Podcast NSM — najpopularniejszy podcast o sprzedaży B2B w Polsce</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BOTTOM CTA ═══ -->
+  <section class="sec--cta-bottom">
+    <div class="container--tight text-center fade-in">
+      <h2 style="font-size:clamp(22px,3vw,30px);margin-bottom:10px">
+        Przestań zgadywać. <span class="hl">Zdiagnozuj.</span>
+      </h2>
+      <p style="font-size:15px;color:var(--text-sec);margin-bottom:8px;line-height:1.65">
+        Pobierz WSS Blueprint i w 15 minut dowiedz się,
+        gdzie Twój proces sprzedaży traci pieniądze.
+      </p>
+      <!-- P6: Risk framing -->
+      <p class="bottom-risk">Nic nie ryzykujesz — w najgorszym wypadku zyskujesz 15 minut jasności.</p>
+      <button class="cta" onclick="window.scrollTo({top:0,behavior:'smooth'})">Pobierz darmowy Blueprint →</button>
+      <p class="bottom-note">Darmowe. Bez karty kredytowej. Natychmiastowy dostęp.</p>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    © 2026 WiseGroup · <a href="#" onclick="event.preventDefault()">Polityka prywatności</a>
+    <br>
+    <span class="sig">Próbka kompetencji przygotowana przez Kuba — Konsultant Wdrożeń IT</span>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- THANK YOU PAGE                     -->
+<!-- ═══════════════════════════════════ -->
+<div class="typ" id="typ">
+  <div style="max-width:560px;text-align:center">
+    <div class="typ__check">✓</div>
+    <h1>Blueprint jest w drodze</h1>
+    <p>
+      Sprawdź swoją skrzynkę e-mail (również folder SPAM).
+      W ciągu 2 minut otrzymasz link do pobrania WSS Blueprint
+      wraz z instrukcją przeprowadzenia samodzielnej diagnozy.
+    </p>
+    <button class="cta" style="margin-bottom:36px">⬇ Pobierz natychmiast tutaj</button>
+
+    <!-- P5: Discovery Call -->
+    <div class="typ__next">
+      <div class="typ__next-label">NASTĘPNY KROK</div>
+      <h3>Chcesz przejść przez wyniki z konsultantem WSS?</h3>
+      <p>
+        Zarezerwuj bezpłatną 30-minutową sesję diagnostyczną.
+        Konsultant przejdzie z Tobą przez Twój scoring, wskaże priorytety
+        i zaproponuje konkretne działania — bez zobowiązań.
+      </p>
+      <button class="cta cta--outline cta--full">Zarezerwuj bezpłatną sesję →</button>
+      <p class="form-note">Bez rozmów sprzedażowych. Czysta diagnoza.</p>
+    </div>
+
+    <!-- Resources -->
+    <div class="typ__resources">
+      <p class="typ__resources-title">Podczas gdy czekasz</p>
+      <div class="typ__res">
+        <span class="typ__res-icon">🎧</span>
+        <div>
+          <div class="typ__res-title">Podcast NSM</div>
+          <div class="typ__res-desc">Najpopularniejszy podcast o sprzedaży B2B w Polsce</div>
+        </div>
+      </div>
+      <div class="typ__res">
+        <span class="typ__res-icon">🛠</span>
+        <div>
+          <div class="typ__res-title">WiseTools</div>
+          <div class="typ__res-desc">Recenzje narzędzi IT dla biznesu</div>
+        </div>
+      </div>
+      <div class="typ__res">
+        <span class="typ__res-icon">📖</span>
+        <div>
+          <div class="typ__res-title">Blog SellWise</div>
+          <div class="typ__res-desc">Artykuły o procesach sprzedaży i CRM</div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:24px">
+      Znasz kogoś, komu to pomoże? Prześlij link do tej strony.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- JAVASCRIPT                         -->
+<!-- ═══════════════════════════════════ -->
+<script>
+(function(){
+  // ─── Scroll fade-in ───
+  const obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.fade-in').forEach(function(el){obs.observe(el)});
+
+  // ─── Select color fix ───
+  var sel = document.getElementById('teamSize');
+  sel.addEventListener('change',function(){
+    sel.classList.toggle('empty', !sel.value);
+  });
+
+  // ─── Form submission ───
+  var form = document.getElementById('leadForm');
+  var errBox = document.getElementById('formError');
+  var lp = document.getElementById('lp');
+  var typ = document.getElementById('typ');
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    errBox.classList.remove('show');
+    errBox.textContent = '';
+
+    var email = document.getElementById('email').value.trim();
+    var team = document.getElementById('teamSize').value;
+    var ok = document.getElementById('consent').checked;
+
+    if(!email || email.indexOf('@') === -1 || email.indexOf('.') === -1){
+      showError('Podaj prawidłowy adres e-mail firmowy.'); return;
+    }
+    if(!team){showError('Wybierz wielkość zespołu sprzedaży.'); return;}
+    if(!ok){showError('Wymagana zgoda na przetwarzanie danych.'); return;}
+
+    // Success → show Thank You
+    lp.classList.add('hide');
+    typ.classList.add('show');
+    window.scrollTo({top:0,behavior:'auto'});
+  });
+
+  function showError(msg){
+    errBox.textContent = msg;
+    errBox.classList.add('show');
+  }
+})();
+</script>
+</body>
+</html>
